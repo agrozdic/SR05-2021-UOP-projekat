@@ -1,14 +1,16 @@
 package knjige;
 
 import java.time.LocalDate;
+import osobe.Zaposleni;
+import osobe.Clan;
 
 import osobe.Clan;
 import osobe.Zaposleni;
 
 public class Iznajmljivanje {
 
-	private osobe.Zaposleni zaposleni;
-	private osobe.Clan clan;
+	private Zaposleni zaposleni;
+	private Clan clan;
 	private LocalDate datum;
 	private Primerak primerak;
 	

@@ -21,6 +21,19 @@ public class Knjiga {
 		this.opis = "";
 		this.zanr = null;
 	}
+	
+	public Knjiga(String id, String naslov, String originalniNaslov, String pisac, int godinaObjave,
+			String jezikOriginala, String opis, Zanr zanr) {
+		super();
+		this.id = id;
+		this.naslov = naslov;
+		this.originalniNaslov = originalniNaslov;
+		this.pisac = pisac;
+		this.godinaObjave = godinaObjave;
+		this.jezikOriginala = jezikOriginala;
+		this.opis = opis;
+		this.zanr = zanr;
+	}
 
 	public String getId() {
 		return id;
