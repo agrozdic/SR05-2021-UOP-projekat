@@ -1,12 +1,12 @@
 package osobe;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Clan extends Osoba {
 
 	private String brojClanskeKarte;
 	private TipClanarine tipClanarine;
-	private Date datumPoslednjeUplateClanarine;
+	private LocalDate datumPoslednjeUplateClanarine;
 	private int brojUplacenihMeseci;
 	private boolean aktivnost;
 	
@@ -19,7 +19,7 @@ public class Clan extends Osoba {
 		this.aktivnost = false;
 	}
 	
-	public Clan(String id, String ime, String prezime, String jmbg, Pol pol, double plata, String korisnickoIme, String lozinka, String brojClanskeKarte, TipClanarine tipClanarine, Date datumPoslednjeUplateClanarine,
+	public Clan(String id, String ime, String prezime, String jmbg, Pol pol, double plata, String korisnickoIme, String lozinka, String brojClanskeKarte, TipClanarine tipClanarine, LocalDate datumPoslednjeUplateClanarine,
 			int brojUplacenihMeseci, boolean aktivnost) {
 		super();
 		this.brojClanskeKarte = brojClanskeKarte;
@@ -45,11 +45,11 @@ public class Clan extends Osoba {
 		this.tipClanarine = tipClanarine;
 	}
 
-	public Date getDatumPoslednjeUplateClanarine() {
+	public LocalDate getDatumPoslednjeUplateClanarine() {
 		return datumPoslednjeUplateClanarine;
 	}
 
-	public void setDatumPoslednjeUplateClanarine(Date datumPoslednjeUplateClanarine) {
+	public void setDatumPoslednjeUplateClanarine(LocalDate datumPoslednjeUplateClanarine) {
 		this.datumPoslednjeUplateClanarine = datumPoslednjeUplateClanarine;
 	}
 

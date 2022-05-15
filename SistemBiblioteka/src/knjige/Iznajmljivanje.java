@@ -1,6 +1,6 @@
 package knjige;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import osobe.Clan;
 import osobe.Zaposleni;
@@ -9,7 +9,7 @@ public class Iznajmljivanje {
 
 	private osobe.Zaposleni zaposleni;
 	private osobe.Clan clan;
-	private Date datum;
+	private LocalDate datum;
 	private Primerak primerak;
 	
 	public Iznajmljivanje() {
@@ -19,7 +19,7 @@ public class Iznajmljivanje {
 		this.primerak = null;
 	}
 
-	public Iznajmljivanje(Zaposleni zaposleni, Clan clan, Date datum, Primerak primerak) {
+	public Iznajmljivanje(Zaposleni zaposleni, Clan clan, LocalDate datum, Primerak primerak) {
 		super();
 		this.zaposleni = zaposleni;
 		this.clan = clan;
@@ -43,11 +43,11 @@ public class Iznajmljivanje {
 		this.clan = clan;
 	}
 
-	public Date getDatum() {
+	public LocalDate getDatum() {
 		return datum;
 	}
 
-	public void setDatum(Date datum) {
+	public void setDatum(LocalDate datum) {
 		this.datum = datum;
 	}
 

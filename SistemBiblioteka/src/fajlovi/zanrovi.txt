@@ -1,0 +1,3 @@
+roman|ZNR01|Opis zanra roman
+zbirka|ZNR02|Opis zanra zbirka
+epska poetika|ZNR03|Opis zanra epska poetika
