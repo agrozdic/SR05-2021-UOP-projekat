@@ -14,7 +14,7 @@ public class Clan extends Osoba {
 		super();
 		this.brojClanskeKarte = "";
 		this.tipClanarine = TipClanarine.OSNOVNA;
-		this.datumPoslednjeUplateClanarine = new Date();
+		this.datumPoslednjeUplateClanarine = null;
 		this.brojUplacenihMeseci = 0;
 		this.aktivnost = false;
 	}
