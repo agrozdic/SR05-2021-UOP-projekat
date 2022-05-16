@@ -76,4 +76,13 @@ public abstract class Osoba {
 		this.pol = pol;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nID: " + id
+				 + "\nIme: " + this.ime
+				 + "\nPrezime: " + this.prezime
+				 + "\nJMBG: " + this.jmbg
+				 + "\nPol: " + this.pol;
+	}
+	
 }

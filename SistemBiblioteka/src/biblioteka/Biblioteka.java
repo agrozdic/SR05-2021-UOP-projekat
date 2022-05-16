@@ -25,7 +25,7 @@ public class Biblioteka {
 	private String adresa;
 	private String telefon;
 	private String radnoVreme;
-	private ArrayList<Administrator> administatori;
+	private ArrayList<Administrator> administratori;
 	private ArrayList<Bibliotekar> bibliotekari;
 	private ArrayList<Clan> clanovi;
 	private ArrayList<Knjiga> knjige;
@@ -39,7 +39,7 @@ public class Biblioteka {
 		this.adresa = "";
 		this.telefon = "";
 		this.radnoVreme = "";
-		this.administatori = new ArrayList<Administrator>();
+		this.administratori = new ArrayList<Administrator>();
 		this.bibliotekari = new ArrayList<Bibliotekar>();
 		this.clanovi = new ArrayList<Clan>();
 		this.knjige = new ArrayList<Knjiga>();
@@ -54,7 +54,7 @@ public class Biblioteka {
 		this.adresa = adresa;
 		this.telefon = telefon;
 		this.radnoVreme = radnoVreme;
-		this.administatori = new ArrayList<Administrator>();
+		this.administratori = new ArrayList<Administrator>();
 		this.bibliotekari = new ArrayList<Bibliotekar>();
 		this.clanovi = new ArrayList<Clan>();
 		this.knjige = new ArrayList<Knjiga>();
@@ -103,16 +103,16 @@ public class Biblioteka {
 		this.radnoVreme = radnoVreme;
 	}
 
-	public ArrayList<Administrator> getAdministatori() {
-		return administatori;
+	public ArrayList<Administrator> getAdministratori() {
+		return administratori;
 	}
 	
 	public void dodajAdministratora(Administrator administrator) {
-		this.administatori.add(administrator);
+		this.administratori.add(administrator);
 	}
 	
 	public void ukloniAdministratora(Administrator administrator) {
-		this.administatori.remove(administrator);
+		this.administratori.remove(administrator);
 	}
 
 	public ArrayList<Bibliotekar> getBibliotekari() {
@@ -187,7 +187,7 @@ public class Biblioteka {
 		this.iznajmljivanja.remove(iznajmljivanje);
 	}
 	
-	public void ucitajZaposlenog(String fajl) {
+	public void ucitajZaposlene(String fajl) {
 		try {
 			File file = new File("src/fajlovi/" + fajl);
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -217,7 +217,9 @@ public class Biblioteka {
 				}
 				if(id.contains("ADM")) {
 					Administrator administrator = new Administrator(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
-					administatori.add(administrator);
+					System.out.println(administrator.toString());
+					System.out.println(id + ime + prezime);
+					administratori.add(administrator);
 				}
 				else {
 					Bibliotekar bibliotekar = new Bibliotekar(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
@@ -231,7 +233,7 @@ public class Biblioteka {
 		}
 	}
 	
-	public void ucitajClana(String fajl) {
+	public void ucitajClanove(String fajl) {
 		try {
 			File file = new File("src/fajlovi/" + fajl);
 			BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -284,7 +286,7 @@ public class Biblioteka {
 		}
 	}
 	
-	public void ucitajKnjigu(String fajl) {
+	public void ucitajKnjige(String fajl) {
 		try {
 			File file = new File("src/fajlovi/" + fajl);
 			BufferedReader reader = new BufferedReader(new FileReader(file));

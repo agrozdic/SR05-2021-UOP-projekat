@@ -14,4 +14,9 @@ public class Administrator extends Zaposleni {
 		
 	}
 	
+	@Override
+	public String toString() {
+		return "\nADMINISTRATOR " + super.toString();
+	}
+	
 }

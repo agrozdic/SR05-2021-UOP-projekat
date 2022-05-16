@@ -69,5 +69,14 @@ public class Clan extends Osoba {
 		this.aktivnost = aktivnost;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nCLAN " + super.toString() +
+				"\nTipClanarine: " + this.tipClanarine +
+				"\nDatum poslednje uplate clanarine: " + this.datumPoslednjeUplateClanarine + 
+				"\nbrojUplacenihMeseci: " + this.brojUplacenihMeseci +
+				"\nAktivnost: " + this.aktivnost;
+	}
+	
 }
 

@@ -47,4 +47,12 @@ public abstract class Zaposleni extends Osoba{
 	public void dodajClana(Clan clan) {
 		
 	}
+	
+	@Override
+	public String toString() {
+		return super.toString() + 
+				"\nPlata: " + String.valueOf(this.plata) +
+				"\nKorisnicko ime: " + this.korisnickoIme + 
+				"\nLozinka: " + this.lozinka;
+	}
 }
