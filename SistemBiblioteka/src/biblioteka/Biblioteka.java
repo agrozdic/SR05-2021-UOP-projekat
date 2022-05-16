@@ -1,14 +1,18 @@
 package biblioteka;
 
 import java.io.BufferedReader;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import osobe.Administrator;
 import osobe.Bibliotekar;
 import osobe.Clan;
+import osobe.Pol;
+import osobe.TipClanarine;
 import knjige.Knjiga;
 import knjige.Zanr;
 import knjige.Primerak;
@@ -183,6 +187,103 @@ public class Biblioteka {
 		this.iznajmljivanja.remove(iznajmljivanje);
 	}
 	
+	public void ucitajZaposlenog(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String id = split[0];
+				String ime = split[1];
+				String prezime = split[2];
+				String jmbg = split[3];
+				String pol = split[4];
+				String adresa = split[5];
+				double plata = Double.parseDouble(split[6]);
+				String korisnickoIme = split[7];
+				String lozinka = split[8];
+				Pol polZaposlenog = null;
+				switch(pol) {
+					case "":
+						polZaposlenog = Pol.NEIZJASNJENI;
+						break;
+					case "Z":
+						polZaposlenog = Pol.ZENSKI;
+						break;
+					case "M":
+						polZaposlenog = Pol.MUSKI;
+						break;
+				}
+				if(id.contains("ADM")) {
+					Administrator administrator = new Administrator(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
+					administatori.add(administrator);
+				}
+				else {
+					Bibliotekar bibliotekar = new Bibliotekar(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
+					bibliotekari.add(bibliotekar);
+				}
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
+			e.printStackTrace();
+		}
+	}
+	
+	public void ucitajClana(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String id = split[0];
+				String ime = split[1];
+				String prezime = split[2];
+				String jmbg = split[3];
+				String pol = split[4];
+				String adresa = split[5];
+				String brojClanskeKarte = split[6];
+				String tipClanarine = split[7];
+				LocalDate datumPoslednjeUplateClanarine = LocalDate.parse(split[8]);
+				int brojUplacenihMeseci = Integer.parseInt(split[9]);
+				boolean aktivnost = Boolean.parseBoolean(split[10]);
+				Pol polClana = null;
+				switch(pol) {
+					case "":
+						polClana = Pol.NEIZJASNJENI;
+						break;
+					case "Z":
+						polClana = Pol.ZENSKI;
+						break;
+					case "M":
+						polClana = Pol.MUSKI;
+						break;
+				}
+				TipClanarine tipClanarineObj = null;
+				switch(tipClanarine) {
+					case "osnovna":
+						tipClanarineObj = TipClanarine.OSNOVNA;
+						break;
+					case "deca":
+						tipClanarineObj = TipClanarine.DECA;
+						break;
+					case "penzioneri":
+						tipClanarineObj = TipClanarine.PENZIONERI;
+						break;
+				}
+				Clan clan = new Clan(id, ime, prezime, jmbg, adresa, polClana, brojClanskeKarte, tipClanarineObj, datumPoslednjeUplateClanarine, brojUplacenihMeseci, aktivnost);
+				clanovi.add(clan);
+				
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
+			e.printStackTrace();
+		}
+	}
+	
 	public void ucitajKnjigu(String fajl) {
 		try {
 			File file = new File("src/fajlovi/" + fajl);
@@ -207,6 +308,26 @@ public class Biblioteka {
 				}
 				Knjiga knjiga = new Knjiga(id, naslov, originalniNaslov, pisac, godinaObjave, jezikOriginala, opis, zanrKnjige);
 				knjige.add(knjiga);
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
+			e.printStackTrace();
+		}
+	}
+	
+	public void ucitajZanrove(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String naziv = split[0];
+				String oznaka = split[1];
+				String opis = split[2];
+				Zanr zanr = new Zanr(naziv, oznaka, opis);
+				zanrovi.add(zanr);
 			}
 			reader.close();
 		} catch (IOException e) {

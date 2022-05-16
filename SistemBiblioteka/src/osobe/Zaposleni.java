@@ -13,7 +13,7 @@ public abstract class Zaposleni extends Osoba{
 		this.lozinka = "";
 	}
 
-	public Zaposleni(String id, String ime, String prezime, String jmbg, Pol pol, double plata, String korisnickoIme, String lozinka) {
+	public Zaposleni(String id, String ime, String prezime, String jmbg, String adresa, Pol pol, double plata, String korisnickoIme, String lozinka) {
 		super();
 		this.plata = plata;
 		this.korisnickoIme = korisnickoIme;

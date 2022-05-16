@@ -6,7 +6,7 @@ public class Bibliotekar extends Zaposleni {
 		super();
 	}
 	
-	public Bibliotekar(String id, String ime, String prezime, String jmbg, Pol pol, double plata, String korisnickoIme, String lozinka) {
+	public Bibliotekar(String id, String ime, String prezime, String jmbg, String adresa, Pol pol, double plata, String korisnickoIme, String lozinka) {
 		super();
 	}
 	
