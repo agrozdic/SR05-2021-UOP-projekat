@@ -69,7 +69,7 @@ public class Primerak {
 	public String toString() {
 		return "\nPRIMERAK"
 				 + "\nID: " + this.id
-				 + "\nKnjiga: " + this.knjiga
+				 + "\nKnjiga: " + this.knjiga.getNaslov()
 				 + "\nTip poveza: " + this.tipPoveza
 				 + "\nGodina stampe: " + this.godinaStampe
 				 + "\nIzdat: " + this.izdat;

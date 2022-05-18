@@ -25,6 +25,7 @@ public abstract class Osoba {
 		this.ime = ime;
 		this.prezime = prezime;
 		this.jmbg = jmbg;
+		this.adresa = adresa;
 		this.pol = pol;
 	}
 

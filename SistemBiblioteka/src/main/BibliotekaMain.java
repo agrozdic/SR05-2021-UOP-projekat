@@ -1,6 +1,11 @@
 package main;
 
+import java.time.LocalDate;
+
 import biblioteka.Biblioteka;
+import osobe.Clan;
+import osobe.Pol;
+import osobe.TipClanarine;
 
 public class BibliotekaMain {
 	
@@ -17,7 +22,25 @@ public class BibliotekaMain {
 		biblioteka.ucitajClanove(fClanovi);
 		biblioteka.ucitajZanrove(fZanrovi);
 		biblioteka.ucitajKnjige(fKnjige);
+		biblioteka.ucitajPrimerke(fPrimerci);
+		System.out.println("\n----- UCITAVANJE BIBLIOTEKARA -----\n");
+		System.out.println(biblioteka.getBibliotekari());
+		System.out.println("\n----- UCITAVANJE ADMINISTRATORA -----\n");
+		System.out.println(biblioteka.getAdministratori());
+		System.out.println("\n----- UCITAVANJE CLANOVA -----\n");
+		System.out.println(biblioteka.getClanovi());
+		System.out.println("\n----- UCITAVANJE ZANROVA -----\n");
+		System.out.println(biblioteka.getZanrovi());
+		System.out.println("\n----- UCITAVANJE KNJIGA -----\n");
 		System.out.println(biblioteka.getKnjige());
+		System.out.println("\n----- UCITAVANJE PRIMERAKA -----\n");
+		System.out.println(biblioteka.getPrimerci());
+		Clan noviClan = new Clan("CLA05", "Milenko", "Milenkovic", "0506993860987", "Novosadska 1, Novi Sad", Pol.NEIZJASNJENI, "BCK005", TipClanarine.OSNOVNA, LocalDate.parse("2022-01-01"), 1, true);
+		biblioteka.getBibliotekari().get(0).dodajClana(noviClan);
+		System.out.println("\n----- UCITAVANJE CLANOVA SA DODATIM CLANOM -----\n");
+		biblioteka.ucitajClanove(fClanovi);
+		System.out.println(biblioteka.getClanovi());
+		biblioteka.ucitajClanove(fClanovi);
 	}
 
 }

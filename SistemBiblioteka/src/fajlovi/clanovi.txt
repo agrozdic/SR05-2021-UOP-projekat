@@ -1,4 +1,5 @@
 CLA01|Lazar|Lazarevic|0102993860987|M|Strosmajerova 9, Novi Sad|BCK001|osnovna|2022-03-01|6|true
 CLA02|Ivana|Ivanovic|0203994865987|Z|Londondska 981, Beograd|BCK002|deca|2022-05-01|1|true
-CLA03|Dragan|Draganic|0304993860987||Bulvar Kralja Petra 87, Beograd|BCK003|penzioneri|2021-12-31|12|true
+CLA03|Dragan|Draganic|0304993860987| |Bulvar Kralja Petra 87, Beograd|BCK003|penzioneri|2021-12-31|12|true
 CLA04|Milan|Milanovic|0405993860987|M|Sremska 1, Subotica|BCK004|osnovna|2022-04-15|2|true
+CLA05|Milenko|Milenkovic|0506993860987| |Novosadska 1, Novi Sad|BCK005|osnovna|2022-01-01|1|true

@@ -206,7 +206,7 @@ public class Biblioteka {
 				String lozinka = split[8];
 				Pol polZaposlenog = null;
 				switch(pol) {
-					case "":
+					case " ":
 						polZaposlenog = Pol.NEIZJASNJENI;
 						break;
 					case "Z":
