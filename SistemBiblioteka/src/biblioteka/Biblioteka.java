@@ -16,6 +16,7 @@ import osobe.TipClanarine;
 import knjige.Knjiga;
 import knjige.Zanr;
 import knjige.Primerak;
+import knjige.TipPoveza;
 import knjige.Iznajmljivanje;
 
 public class Biblioteka {
@@ -217,8 +218,6 @@ public class Biblioteka {
 				}
 				if(id.contains("ADM")) {
 					Administrator administrator = new Administrator(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
-					System.out.println(administrator.toString());
-					System.out.println(id + ime + prezime);
 					administratori.add(administrator);
 				}
 				else {
@@ -330,6 +329,50 @@ public class Biblioteka {
 				String opis = split[2];
 				Zanr zanr = new Zanr(naziv, oznaka, opis);
 				zanrovi.add(zanr);
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
+			e.printStackTrace();
+		}
+	}
+	
+	public void ucitajPrimerke(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String id = split[0];
+				String knjigaID = split[1];
+				String tipPoveza = split[2];
+				int godinaStampe = Integer.parseInt(split[3]);
+				boolean izdat = Boolean.parseBoolean(split[4]);
+				Knjiga knjigaObj = null;
+				for(Knjiga knjiga : knjige) {
+					if(knjiga.getId().equals(knjigaID)) {
+						knjigaObj = knjiga;
+						break;
+					}
+				}
+				TipPoveza tpObj = null;
+				switch(tipPoveza) {
+					case "meki":
+						tpObj = TipPoveza.MEKI;
+						break;
+					case "tvrdi":
+						tpObj = TipPoveza.TVRDI;
+						break;
+					case "kozni":
+						tpObj = TipPoveza.KOZNI;
+						break;
+					case "platneni":
+						tpObj = TipPoveza.PLATNENI;
+						break;
+				}
+				Primerak primerak = new Primerak(id, knjigaObj, tpObj, godinaStampe, izdat);
+				primerci.add(primerak);
 			}
 			reader.close();
 		} catch (IOException e) {

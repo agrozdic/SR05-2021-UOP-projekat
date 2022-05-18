@@ -15,7 +15,9 @@ public class BibliotekaMain {
 		Biblioteka biblioteka = new Biblioteka("BIBLIOTEKA-001", "Gradska biblioteka", "Bulevar Oslobodjenja 1", "0213456789", "08-16");
 		biblioteka.ucitajZaposlene(fZaposleni);
 		biblioteka.ucitajClanove(fClanovi);
-
+		biblioteka.ucitajZanrove(fZanrovi);
+		biblioteka.ucitajKnjige(fKnjige);
+		System.out.println(biblioteka.getKnjige());
 	}
 
 }

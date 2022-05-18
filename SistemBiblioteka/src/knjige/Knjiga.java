@@ -99,4 +99,17 @@ public class Knjiga {
 		this.zanr = zanr;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nKNJIGA"
+				 + "\nID: " + this.id
+				 + "\nNaslov: " + this.naslov
+				 + "\nOriginalni naslov: " + this.originalniNaslov
+				 + "\nPisac: " + this.pisac
+				 + "\nGodina objave: " + this.godinaObjave
+				 + "\nJezik originala: " + this.jezikOriginala
+				 + "\nOpis: " + this.opis
+				 + "\nZanr: " + this.zanr.getNaziv();
+	}
+	
 }

@@ -7,7 +7,7 @@ public class Administrator extends Zaposleni {
 	}
 	
 	public Administrator(String id, String ime, String prezime, String jmbg, String adresa, Pol pol, double plata, String korisnickoIme, String lozinka) {
-		super();
+		super(id, ime, prezime, jmbg, adresa, pol, plata, korisnickoIme, lozinka);
 	}
 
 	public void registrujZaposlene(Zaposleni zaposleni) {

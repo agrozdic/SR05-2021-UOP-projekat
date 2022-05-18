@@ -3,23 +3,23 @@ package knjige;
 public class Primerak {
 
 	private String id;
-	private Knjiga kniga;
+	private Knjiga knjiga;
 	private TipPoveza tipPoveza;
 	private int godinaStampe;
 	private boolean izdat;
 	
 	public Primerak() {
 		this.id = "";
-		this.kniga = null;
+		this.knjiga = null;
 		this.tipPoveza = TipPoveza.MEKI;
 		this.godinaStampe = 0;
 		this.izdat = false;
 	}
 
-	public Primerak(String id, Knjiga kniga, TipPoveza tipPoveza, int godinaStampe, boolean izdat) {
+	public Primerak(String id, Knjiga knjiga, TipPoveza tipPoveza, int godinaStampe, boolean izdat) {
 		super();
 		this.id = id;
-		this.kniga = kniga;
+		this.knjiga = knjiga;
 		this.tipPoveza = tipPoveza;
 		this.godinaStampe = godinaStampe;
 		this.izdat = izdat;
@@ -33,12 +33,12 @@ public class Primerak {
 		this.id = id;
 	}
 
-	public Knjiga getKniga() {
-		return kniga;
+	public Knjiga getKnjiga() {
+		return knjiga;
 	}
 
-	public void setKniga(Knjiga kniga) {
-		this.kniga = kniga;
+	public void setKjniga(Knjiga knjiga) {
+		this.knjiga = knjiga;
 	}
 
 	public TipPoveza getTipPoveza() {
@@ -65,4 +65,14 @@ public class Primerak {
 		this.izdat = izdat;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nPRIMERAK"
+				 + "\nID: " + this.id
+				 + "\nKnjiga: " + this.knjiga
+				 + "\nTip poveza: " + this.tipPoveza
+				 + "\nGodina stampe: " + this.godinaStampe
+				 + "\nIzdat: " + this.izdat;
+	}
+
 }

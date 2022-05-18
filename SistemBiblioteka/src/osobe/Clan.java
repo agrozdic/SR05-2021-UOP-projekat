@@ -21,7 +21,7 @@ public class Clan extends Osoba {
 	
 	public Clan(String id, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojClanskeKarte, TipClanarine tipClanarine, LocalDate datumPoslednjeUplateClanarine,
 			int brojUplacenihMeseci, boolean aktivnost) {
-		super();
+		super(id, ime, prezime, jmbg, adresa, pol);
 		this.brojClanskeKarte = brojClanskeKarte;
 		this.tipClanarine = tipClanarine;
 		this.datumPoslednjeUplateClanarine = datumPoslednjeUplateClanarine;
