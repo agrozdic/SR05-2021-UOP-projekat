@@ -61,4 +61,13 @@ public class Iznajmljivanje {
 		this.primerak = primerak;
 	}
 	
+	@Override
+	public String toString() {
+		return "\nIZNAJMLJIVANJE"
+				 + "\nZaposleni: " + this.zaposleni.getId()
+				 + "\nClan: " + this.clan.getId()
+				 + "\nDatum iznajmljivanja: " + this.datum
+				 + "\nPrimerak: " + this.primerak.getId();
+	}
+	
 }

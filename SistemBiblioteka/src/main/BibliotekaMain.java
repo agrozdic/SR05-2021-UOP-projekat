@@ -16,6 +16,7 @@ public class BibliotekaMain {
 	private static String fKnjige = "knjige.txt";
 	private static String fZanrovi = "zanrovi.txt";
 	private static String fPrimerci = "primerci.txt";
+	private static String fIznajmljivanja = "iznajmljivanja.txt";
 
 	public static void main(String[] args) {
 		
@@ -25,6 +26,7 @@ public class BibliotekaMain {
 		biblioteka.ucitajZanrove(fZanrovi);
 		biblioteka.ucitajKnjige(fKnjige);
 		biblioteka.ucitajPrimerke(fPrimerci);
+		biblioteka.ucitajIznajmljivanja(fIznajmljivanja);
 		System.out.println("\n----- UCITAVANJE BIBLIOTEKARA -----\n");
 		System.out.println(biblioteka.getBibliotekari());
 		System.out.println("\n----- UCITAVANJE ADMINISTRATORA -----\n");
@@ -37,6 +39,8 @@ public class BibliotekaMain {
 		System.out.println(biblioteka.getKnjige());
 		System.out.println("\n----- UCITAVANJE PRIMERAKA -----\n");
 		System.out.println(biblioteka.getPrimerci());
+		System.out.println("\n----- UCITAVANJE IZNAJMLJIVANJA -----\n");
+		System.out.println(biblioteka.getIznajmljivanja());
 		
 		Clan noviClan = new Clan("CLA05", "Milenko", "Milenkovic", "0506993860987", "Novosadska 1, Novi Sad", Pol.NEIZJASNJENI, "BCK005", TipClanarine.OSNOVNA, LocalDate.parse("2022-01-01"), 1, true);
 		biblioteka.getBibliotekari().get(0).dodajClana(noviClan);

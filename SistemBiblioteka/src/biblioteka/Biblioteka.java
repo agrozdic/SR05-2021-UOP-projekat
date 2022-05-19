@@ -13,6 +13,7 @@ import osobe.Bibliotekar;
 import osobe.Clan;
 import osobe.Pol;
 import osobe.TipClanarine;
+import osobe.Zaposleni;
 import knjige.Knjiga;
 import knjige.Zanr;
 import knjige.Primerak;
@@ -373,6 +374,56 @@ public class Biblioteka {
 				}
 				Primerak primerak = new Primerak(id, knjigaObj, tpObj, godinaStampe, izdat);
 				primerci.add(primerak);
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
+			e.printStackTrace();
+		}
+	}
+	
+	public void ucitajIznajmljivanja(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String zaposleni = split[0];
+				String clan = split[1];
+				LocalDate datum = LocalDate.parse(split[2]);
+				String primerak = split[3];
+				Zaposleni zaposleniObj = null;
+				for(Administrator adm : administratori) {
+					if(adm.getId().equals(zaposleni)) {
+						zaposleniObj = adm;
+						break;
+					}
+				}
+				if(zaposleniObj == null) {
+					for(Bibliotekar bib : bibliotekari) {
+						if(bib.getId().equals(zaposleni)) {
+							zaposleniObj = bib;
+							break;
+						}
+					}
+				}
+				Clan clanObj = null;
+				for(Clan cln : clanovi) {
+					if(cln.getId().equals(clan)) {
+						clanObj = cln;
+						break;
+					}
+				}
+				Primerak primerakObj = null;
+				for(Primerak prim : primerci) {
+					if(prim.getId().equals(primerak)) {
+						primerakObj = prim;
+						break;
+					}
+				}
+				Iznajmljivanje iznajmljivanje = new Iznajmljivanje(zaposleniObj, clanObj, datum, primerakObj);
+				iznajmljivanja.add(iznajmljivanje);
 			}
 			reader.close();
 		} catch (IOException e) {
