@@ -389,10 +389,11 @@ public class Biblioteka {
 			String line;
 			while ((line = reader.readLine()) != null) {
 				String[] split = line.split("\\|");
-				String zaposleni = split[0];
-				String clan = split[1];
-				LocalDate datum = LocalDate.parse(split[2]);
-				String primerak = split[3];
+				String id = split[0];
+				String zaposleni = split[1];
+				String clan = split[2];
+				LocalDate datum = LocalDate.parse(split[3]);
+				String primerak = split[4];
 				Zaposleni zaposleniObj = null;
 				for(Administrator adm : administratori) {
 					if(adm.getId().equals(zaposleni)) {
@@ -422,7 +423,7 @@ public class Biblioteka {
 						break;
 					}
 				}
-				Iznajmljivanje iznajmljivanje = new Iznajmljivanje(zaposleniObj, clanObj, datum, primerakObj);
+				Iznajmljivanje iznajmljivanje = new Iznajmljivanje(id, zaposleniObj, clanObj, datum, primerakObj);
 				iznajmljivanja.add(iznajmljivanje);
 			}
 			reader.close();

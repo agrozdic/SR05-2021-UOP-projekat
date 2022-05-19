@@ -9,20 +9,23 @@ import osobe.Zaposleni;
 
 public class Iznajmljivanje {
 
+	private String id;
 	private Zaposleni zaposleni;
 	private Clan clan;
 	private LocalDate datum;
 	private Primerak primerak;
 	
 	public Iznajmljivanje() {
+		this.id = null;
 		this.zaposleni = null;
 		this.clan = null;
 		this.datum = null;
 		this.primerak = null;
 	}
 
-	public Iznajmljivanje(Zaposleni zaposleni, Clan clan, LocalDate datum, Primerak primerak) {
+	public Iznajmljivanje(String id, Zaposleni zaposleni, Clan clan, LocalDate datum, Primerak primerak) {
 		super();
+		this.id = id;
 		this.zaposleni = zaposleni;
 		this.clan = clan;
 		this.datum = datum;
@@ -64,6 +67,7 @@ public class Iznajmljivanje {
 	@Override
 	public String toString() {
 		return "\nIZNAJMLJIVANJE"
+				 + "\nID: " + this.id
 				 + "\nZaposleni: " + this.zaposleni.getId()
 				 + "\nClan: " + this.clan.getId()
 				 + "\nDatum iznajmljivanja: " + this.datum
