@@ -451,6 +451,27 @@ public class Biblioteka {
 			e.printStackTrace();
 		}
 	}
+
+	public void snimiZanrove(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String content = "";
+			for (Zanr zanr : zanrovi) {
+				String text = "";
+				text +=
+						zanr.getNaziv() + '|' +
+						zanr.getOznaka() + '|' +
+						zanr.getOpis() + "\n";
+				content += text;
+			}
+			bw.write(content);
+			bw.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom dodavanja knjige!");
+				e.printStackTrace();
+			}
+	}
 	
 	public void ucitajPrimerke(String fajl) {
 		try {
@@ -510,9 +531,9 @@ public class Biblioteka {
 						prim.getGodinaStampe() + '|' +
 						prim.isIzdat() + "\n";
 				content += text;
-				}
-				bw.write(content);
-				bw.close();
+			}
+			bw.write(content);
+			bw.close();
 			} catch (IOException e) {
 				System.out.println("Greska prilikom dodavanja knjige!");
 				e.printStackTrace();
