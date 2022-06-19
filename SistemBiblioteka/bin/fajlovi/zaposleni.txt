@@ -5,3 +5,4 @@ ADM04|Julijana|Julic|0102993865078|Z|Njegoseva 8b, Krusevac|90000.0|jjulic04|40c
 BIB01|Simona|Simonovic|0304995865123|Z|Bulevar Cara Lazara 765, Novi Sad|25000.0|ssimonovic01|10civonomiss
 BIB02|Petar|Petrovic|0405996860123|M|Maksima Gorkog 12, Nis|95000.0|ppetrovic02|20civortepps
 BIB03|Milos|Milosevic|0506997860123|M|Proletnja 68, Sombor|40000.0|mmilosevic03|30civesolimm
+BIB04|J|J|8| |d|5.0|ime|ime
