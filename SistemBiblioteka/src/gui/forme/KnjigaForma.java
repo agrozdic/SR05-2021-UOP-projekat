@@ -142,7 +142,7 @@ public class KnjigaForma extends JFrame {
         txtGodina.setText(knjiga.getGodinaObjave() + "");
         txtJezik.setText(knjiga.getJezikOriginala());
         txtOpis.setText(knjiga.getOpis());
-		cbZanr.setSelectedItem(knjiga.getZanr());
+		//cbZanr.getModel().setSelectedItem(knjiga.getZanr().getNaziv());
 	}
 	
 	private boolean validacija() {

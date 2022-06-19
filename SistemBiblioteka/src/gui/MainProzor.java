@@ -10,9 +10,7 @@ import javax.swing.JMenuItem;
 
 import biblioteka.Biblioteka;
 import gui.prikaz.*;
-import osobe.Administrator;
 import osobe.Zaposleni;
-import biblioteka.Biblioteka;
 
 public class MainProzor extends JFrame {
 

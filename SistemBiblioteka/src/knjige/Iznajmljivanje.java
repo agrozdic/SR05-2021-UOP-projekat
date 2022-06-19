@@ -30,6 +30,14 @@ public class Iznajmljivanje {
 		this.primerak = primerak;
 	}
 
+	public String getId(){
+		return this.id;
+	}
+
+	public void setId(String id){
+		this.id = id;
+	}
+
 	public osobe.Zaposleni getZaposleni() {
 		return zaposleni;
 	}

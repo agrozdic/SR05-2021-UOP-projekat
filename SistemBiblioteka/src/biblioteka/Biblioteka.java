@@ -30,6 +30,7 @@ public class Biblioteka {
 	private String radnoVreme;
 	private ArrayList<Administrator> administratori;
 	private ArrayList<Bibliotekar> bibliotekari;
+	private ArrayList<Zaposleni> zaposleniList;
 	private ArrayList<Clan> clanovi;
 	private ArrayList<Knjiga> knjige;
 	private ArrayList<Zanr> zanrovi;
@@ -44,6 +45,7 @@ public class Biblioteka {
 		this.radnoVreme = "";
 		this.administratori = new ArrayList<Administrator>();
 		this.bibliotekari = new ArrayList<Bibliotekar>();
+		this.zaposleniList = new ArrayList<Zaposleni>();
 		this.clanovi = new ArrayList<Clan>();
 		this.knjige = new ArrayList<Knjiga>();
 		this.zanrovi = new ArrayList<Zanr>();
@@ -59,6 +61,7 @@ public class Biblioteka {
 		this.radnoVreme = radnoVreme;
 		this.administratori = new ArrayList<Administrator>();
 		this.bibliotekari = new ArrayList<Bibliotekar>();
+		this.zaposleniList = new ArrayList<Zaposleni>();
 		this.clanovi = new ArrayList<Clan>();
 		this.knjige = new ArrayList<Knjiga>();
 		this.zanrovi = new ArrayList<Zanr>();
@@ -112,10 +115,12 @@ public class Biblioteka {
 	
 	public void dodajAdministratora(Administrator administrator) {
 		this.administratori.add(administrator);
+		this.zaposleniList.add(administrator);
 	}
 	
 	public void ukloniAdministratora(Administrator administrator) {
 		this.administratori.remove(administrator);
+		this.zaposleniList.remove(administrator);
 	}
 
 	public ArrayList<Bibliotekar> getBibliotekari() {
@@ -124,10 +129,16 @@ public class Biblioteka {
 
 	public void dodajBibliotekara(Bibliotekar bibliotekar) {
 		this.bibliotekari.add(bibliotekar);
+		this.zaposleniList.add(bibliotekar);
 	}
 	
 	public void ukloniBibliotekara(Bibliotekar bibliotekar) {
 		this.bibliotekari.remove(bibliotekar);
+		this.zaposleniList.remove(bibliotekar);
+	}
+
+	public ArrayList<Zaposleni> getZaposleni() {
+		return zaposleniList;
 	}
 	
 	public ArrayList<Clan> getClanovi() {
@@ -237,10 +248,12 @@ public class Biblioteka {
 				if(id.contains("ADM")) {
 					Administrator administrator = new Administrator(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
 					administratori.add(administrator);
+					zaposleniList.add(administrator);
 				}
 				else {
 					Bibliotekar bibliotekar = new Bibliotekar(id, ime, prezime, jmbg, adresa, polZaposlenog, plata, korisnickoIme, lozinka);
 					bibliotekari.add(bibliotekar);
+					zaposleniList.add(bibliotekar);
 				}
 			}
 			reader.close();
@@ -526,7 +539,7 @@ public class Biblioteka {
 				String text = "";
 				text +=
 						prim.getId() + '|' +
-						prim.getKnjiga().getNaslov() + '|' +
+						prim.getKnjiga().getId() + '|' +
 						prim.getTipPoveza() + '|' +
 						prim.getGodinaStampe() + '|' +
 						prim.isIzdat() + "\n";
@@ -589,6 +602,29 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
 			e.printStackTrace();
 		}
+	}
+
+	public void snimiIznajmljivanja(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String content = "";
+			for (Iznajmljivanje izn : iznajmljivanja) {
+				String text = "";
+				text +=
+						izn.getId() + '|' +
+						izn.getZaposleni().getId() + '|' +
+						izn.getClan().getId() + '|' +
+						izn.getDatum().toString() + '|' +
+						izn.getPrimerak().getId() + "\n";
+				content += text;
+			}
+			bw.write(content);
+			bw.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom dodavanja knjige!");
+				e.printStackTrace();
+			}
 	}
 	
 }

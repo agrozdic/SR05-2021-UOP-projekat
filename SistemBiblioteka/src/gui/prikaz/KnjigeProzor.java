@@ -16,12 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 
 import main.BibliotekaMain;
-import osobe.Administrator;
 import biblioteka.Biblioteka;
-import gui.forme.AdminForma;
 import gui.forme.KnjigaForma;
 import knjige.Knjiga;
-import knjige.Zanr;
 
 public class KnjigeProzor extends JFrame {
 
@@ -138,7 +135,7 @@ public class KnjigeProzor extends JFrame {
 					if(knjiga == null) {
 						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja knjige sa tim ID-jem", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
-						KnjigaForma kf = new KnjigaForma(biblioteka, null);
+						KnjigaForma kf = new KnjigaForma(biblioteka, knjiga);
 				        kf.setVisible(true);
 					}
 				}

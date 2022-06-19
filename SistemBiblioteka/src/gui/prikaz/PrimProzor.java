@@ -16,14 +16,9 @@ import javax.swing.table.DefaultTableModel;
 
 
 import main.BibliotekaMain;
-import osobe.Administrator;
 import biblioteka.Biblioteka;
-import gui.forme.AdminForma;
-import gui.forme.KnjigaForma;
 import gui.forme.PrimForma;
-import knjige.Knjiga;
 import knjige.Primerak;
-import knjige.Zanr;
 
 public class PrimProzor extends JFrame {
 
@@ -137,7 +132,7 @@ public class PrimProzor extends JFrame {
 					if(primerak == null) {
 						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja primerka sa tim ID-jem", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
-						PrimForma pf = new PrimForma(biblioteka, null);
+						PrimForma pf = new PrimForma(biblioteka, primerak);
 				        pf.setVisible(true);
 					}
 				}

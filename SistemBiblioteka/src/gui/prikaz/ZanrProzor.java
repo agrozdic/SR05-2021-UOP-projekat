@@ -130,7 +130,7 @@ public class ZanrProzor extends JFrame {
 					if(zanr == null) {
 						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja zanra sa tim ID-jem", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
-						ZanrForma zf = new ZanrForma(biblioteka, null);
+						ZanrForma zf = new ZanrForma(biblioteka, zanr);
 				        zf.setVisible(true);
 					}
 				}

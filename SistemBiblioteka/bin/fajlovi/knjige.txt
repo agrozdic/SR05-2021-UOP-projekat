@@ -1,4 +1,4 @@
 KNJ01|Svet se raspada|Things Fall Apart|Chinua Achebe|1958|engleski|Opis knjige Svet se raspada|roman
 KNJ02|Bajke|N/A|HansHans Christian Andersen|1835|danski|Opis knjige Bajke|zbirka
-KNJ03|Bozanstvena komedija|Divina Commedia|Dante Alighieri|1265|italijanski|Opis knjige Bozanstvena komedija|epska poetika
+KNJ03|Božanstvena komedija|Divina Commedia|Dante Alighieri|1265|italijanski|Opis knjige Bozanstvena komedija|epska poetika
 KNJ04|Ponos i predrasude|Pride and Prejudice|Jane Austen|1813|engleski|Opis knjige Ponos i predrasude|roman

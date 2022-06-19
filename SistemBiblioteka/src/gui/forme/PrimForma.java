@@ -128,7 +128,7 @@ public class PrimForma extends JFrame {
 	private void popuniPolja() {
         txtID.setEditable(false);
         txtID.setText(primerak.getId());
-		cbKnjiga.setSelectedItem(primerak.getKnjiga());
+		//cbKnjiga.setSelectedItem(primerak.getKnjiga().getNaslov());
 		cbTipPoveza.setSelectedItem(primerak.getTipPoveza());
         txtGodina.setText(primerak.getGodinaStampe() + "");
         if(primerak.isIzdat() == true){

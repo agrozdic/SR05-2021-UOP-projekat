@@ -13,7 +13,6 @@ import javax.swing.JTextField;
 import biblioteka.Biblioteka;
 
 import net.miginfocom.swing.MigLayout;
-import osobe.Administrator;
 import osobe.Zaposleni;
 
 public class LoginProzor extends JFrame {
