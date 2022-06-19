@@ -18,6 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import main.BibliotekaMain;
 import osobe.Administrator;
 import biblioteka.Biblioteka;
+import gui.forme.AdminForma;
 
 public class AdminProzor extends JFrame {
 
@@ -98,7 +99,6 @@ public class AdminProzor extends JFrame {
                             admin = adm;
                         }
                     }
-					
 					int izbor = JOptionPane.showConfirmDialog(null, 
 							"Da li ste sigurni da zelite da obrisete administratora?", 
 							korisnickoIme + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
@@ -111,32 +111,36 @@ public class AdminProzor extends JFrame {
 			}
 		});
 		
-		// btnAdd.addActionListener(new ActionListener() {
-		// 	@Override
-		// 	public void actionPerformed(ActionEvent e) {
-		// 		ProdavciForma pf = new ProdavciForma(prodavnica, null);
-		// 		pf.setVisible(true);
-		// 	}
-		// });
+		btnAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AdminForma af = new AdminForma(biblioteka, null);
+				af.setVisible(true);
+			}
+		});
 		
-		// btnEdit.addActionListener(new ActionListener() {
-			
-		// 	@Override
-		// 	public void actionPerformed(ActionEvent e) {
-		// 		int red = prodavciTabela.getSelectedRow();
-		// 		if(red == -1) {
-		// 			JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
-		// 		}else {
-		// 			String korisnickoIme = tableModel.getValueAt(red, 3).toString();
-		// 			Prodavac prodavac = prodavnica.nadjiProdavca(korisnickoIme);
-		// 			if(prodavac == null) {
-		// 				JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja prodavca sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
-		// 			}else {
-		// 				ProdavciForma pf = new ProdavciForma(prodavnica, prodavac);
-		// 				pf.setVisible(true);
-		// 			}
-		// 		}
-		// 	}
-		// });
+		btnEdit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int red = adminTabela.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					String korisnickoIme = tableModel.getValueAt(red, 7).toString();
+					Administrator admin = null;
+                    for(Administrator adm : biblioteka.getAdministratori()){
+                        if(adm.getKorisnickoIme().equals(korisnickoIme)){
+                            admin = adm;
+                        }
+                    }
+					if(admin == null) {
+						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja prodavca sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+						AdminForma af = new AdminForma(biblioteka, admin);
+						af.setVisible(true);
+					}
+				}
+			}
+		});
 	}
 }

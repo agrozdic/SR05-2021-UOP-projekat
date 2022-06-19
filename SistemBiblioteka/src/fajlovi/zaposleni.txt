@@ -1,6 +1,7 @@
 ADM01|Ana|Anic|0102993865123|Z|Paje Pajica 94, Beograd|65000.0|aantic01|10citnaa
 ADM02|Bojan|Bojanic|0203994860123|M|Beogradska 187, Beograd|45000.0|bbojanic02|20cinajobb
 ADM03|Milenko|Milenkovic|0506993860987| |Novosadska 1, Novi Sad|55000.0|mmilenkovic03|30civoknelimm
+ADM04|Julijana|Julic|0102993865078|Z|Njegoseva 8b, Krusevac|90000.0|jjulic04|40cilujj
 BIB01|Simona|Simonovic|0304995865123|Z|Bulevar Cara Lazara 765, Novi Sad|25000.0|ssimonovic01|10civonomiss
 BIB02|Petar|Petrovic|0405996860123|M|Maksima Gorkog 12, Nis|95000.0|ppetrovic02|20civortepps
 BIB03|Milos|Milosevic|0506997860123|M|Proletnja 68, Sombor|40000.0|mmilosevic03|30civesolimm
