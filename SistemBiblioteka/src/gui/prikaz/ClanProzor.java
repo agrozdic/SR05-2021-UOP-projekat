@@ -19,6 +19,7 @@ import osobe.Bibliotekar;
 import osobe.Clan;
 import biblioteka.Biblioteka;
 import gui.forme.BibForma;
+import gui.forme.ClanForma;
 
 public class ClanProzor extends JFrame {
 
@@ -67,10 +68,10 @@ public class ClanProzor extends JFrame {
 			sadrzaj[i][4] = clan.getPol();
 			sadrzaj[i][5] = clan.getAdresa();
 			sadrzaj[i][6] = clan.getBrojClanskeKarte();
-			sadrzaj[i][6] = clan.getTipClanarine();
-			sadrzaj[i][6] = clan.getDatumPoslednjeUplateClanarine();
-			sadrzaj[i][7] = clan.getBrojUplacenihMeseci();
-			sadrzaj[i][8] = clan.isAktivnost();
+			sadrzaj[i][7] = clan.getTipClanarine();
+			sadrzaj[i][8] = clan.getDatumPoslednjeUplateClanarine();
+			sadrzaj[i][9] = clan.getBrojUplacenihMeseci();
+			sadrzaj[i][10] = clan.isAktivnost();
 		}
 		
 		tableModel = new DefaultTableModel(sadrzaj, zaglavlja);
