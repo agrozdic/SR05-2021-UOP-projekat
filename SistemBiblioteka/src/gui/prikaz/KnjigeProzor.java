@@ -19,8 +19,11 @@ import main.BibliotekaMain;
 import osobe.Administrator;
 import biblioteka.Biblioteka;
 import gui.forme.AdminForma;
+import gui.forme.KnjigaForma;
+import knjige.Knjiga;
+import knjige.Zanr;
 
-public class AdminProzor extends JFrame {
+public class KnjigeProzor extends JFrame {
 
 	private JToolBar mainToolbar = new JToolBar();
 	private JButton btnAdd = new JButton();
@@ -28,13 +31,13 @@ public class AdminProzor extends JFrame {
 	private JButton btnDelete = new JButton();
 	
 	private DefaultTableModel tableModel;
-	private JTable adminTabela;
+	private JTable knjigeTabela;
 	
 	private Biblioteka biblioteka;
 	
-	public AdminProzor(Biblioteka biblioteka) {
+	public KnjigeProzor(Biblioteka biblioteka) {
 		this.biblioteka = biblioteka;
-		setTitle("Administratori");
+		setTitle("Knjige");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -55,32 +58,31 @@ public class AdminProzor extends JFrame {
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
 		
-		String[] zaglavlja = new String[] {"ID", "Ime", "Prezime", "JMBG", "Pol", "Adresa", "Plata", "Korisnicko ime", "Lozinka"};
-		Object[][] sadrzaj = new Object[biblioteka.getAdministratori().size()][zaglavlja.length];
+		String[] zaglavlja = new String[] {"ID", "Naslov", "Originalni naslov", "Autor", "Godina", "Jezik", "Opis", "Zanr"};
+		Object[][] sadrzaj = new Object[biblioteka.getKnjige().size()][zaglavlja.length];
 		
-		for(int i = 0; i < biblioteka.getAdministratori().size(); i++) {
-			Administrator adm = biblioteka.getAdministratori().get(i);
-			sadrzaj[i][0] = adm.getId();
-			sadrzaj[i][1] = adm.getIme();
-			sadrzaj[i][2] = adm.getPrezime();
-			sadrzaj[i][3] = adm.getJmbg();
-			sadrzaj[i][4] = adm.getPol();
-			sadrzaj[i][5] = adm.getAdresa();
-			sadrzaj[i][6] = adm.getPlata();
-			sadrzaj[i][7] = adm.getKorisnickoIme();
-			sadrzaj[i][8] = adm.getLozinka();
+		for(int i = 0; i < biblioteka.getKnjige().size(); i++) {
+			Knjiga knjiga = biblioteka.getKnjige().get(i);
+			sadrzaj[i][0] = knjiga.getId();
+			sadrzaj[i][1] = knjiga.getNaslov();
+			sadrzaj[i][2] = knjiga.getOriginalniNaslov();
+			sadrzaj[i][3] = knjiga.getPisac();
+			sadrzaj[i][4] = knjiga.getGodinaObjave();
+			sadrzaj[i][5] = knjiga.getJezikOriginala();
+			sadrzaj[i][6] = knjiga.getOpis();
+			sadrzaj[i][7] = knjiga.getZanr().getOznaka();
 		}
 		
 		tableModel = new DefaultTableModel(sadrzaj, zaglavlja);
-		adminTabela = new JTable(tableModel);
+		knjigeTabela = new JTable(tableModel);
 		
-		adminTabela.setRowSelectionAllowed(true);
-		adminTabela.setColumnSelectionAllowed(false);
-		adminTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		adminTabela.setDefaultEditor(Object.class, null);
-		adminTabela.getTableHeader().setReorderingAllowed(false);
+		knjigeTabela.setRowSelectionAllowed(true);
+		knjigeTabela.setColumnSelectionAllowed(false);
+		knjigeTabela.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		knjigeTabela.setDefaultEditor(Object.class, null);
+		knjigeTabela.getTableHeader().setReorderingAllowed(false);
 		
-		JScrollPane scrollPane = new JScrollPane(adminTabela);
+		JScrollPane scrollPane = new JScrollPane(knjigeTabela);
 		add(scrollPane, BorderLayout.CENTER);
 	}
 	
@@ -88,24 +90,24 @@ public class AdminProzor extends JFrame {
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int red = adminTabela.getSelectedRow();
+				int red = knjigeTabela.getSelectedRow();
 				if(red == -1) {
 					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
 				}else {
-					String korisnickoIme = tableModel.getValueAt(red, 7).toString();
-                    Administrator admin = null;
-                    for(Administrator adm : biblioteka.getAdministratori()){
-                        if(adm.getKorisnickoIme().equals(korisnickoIme)){
-                            admin = adm;
+					String id = tableModel.getValueAt(red, 0).toString();
+                    Knjiga knjiga = null;
+                    for(Knjiga knj : biblioteka.getKnjige()){
+                        if(knj.getId().equals(id)){
+                            knjiga = knj;
                         }
                     }
 					int izbor = JOptionPane.showConfirmDialog(null, 
-							"Da li ste sigurni da zelite da obrisete administratora?", 
-							korisnickoIme + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
+							"Da li ste sigurni da zelite da obrisete knjigu?", 
+							knjiga.getId() + " - Porvrda brisanja", JOptionPane.YES_NO_OPTION);
 					if(izbor == JOptionPane.YES_OPTION) {
-						biblioteka.ukloniAdministratora(admin);
+						biblioteka.ukloniKnjigu(knjiga);
 						tableModel.removeRow(red);
-						biblioteka.snimiZaposlene(BibliotekaMain.fZaposleni);
+						biblioteka.snimiKnjige(BibliotekaMain.fKnjige);
 					}
 				}
 			}
@@ -114,30 +116,30 @@ public class AdminProzor extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				AdminForma af = new AdminForma(biblioteka, null);
-				af.setVisible(true);
+				KnjigaForma kf = new KnjigaForma(biblioteka, null);
+				kf.setVisible(true);
 			}
 		});
 		
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int red = adminTabela.getSelectedRow();
+				int red = knjigeTabela.getSelectedRow();
 				if(red == -1) {
 					JOptionPane.showMessageDialog(null, "Morate odabrati red u tabeli.", "Greska", JOptionPane.WARNING_MESSAGE);
 				}else {
-					String korisnickoIme = tableModel.getValueAt(red, 7).toString();
-					Administrator admin = null;
-                    for(Administrator adm : biblioteka.getAdministratori()){
-                        if(adm.getKorisnickoIme().equals(korisnickoIme)){
-                            admin = adm;
+					String id = tableModel.getValueAt(red, 0).toString();
+                    Knjiga knjiga = null;
+                    for(Knjiga knj : biblioteka.getKnjige()){
+                        if(knj.getId().equals(id)){
+                            knjiga = knj;
                         }
                     }
-					if(admin == null) {
-						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja bibliotekara sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+					if(knjiga == null) {
+						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja knjige sa tim ID-jem", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
-						AdminForma af = new AdminForma(biblioteka, admin);
-						af.setVisible(true);
+						KnjigaForma kf = new KnjigaForma(biblioteka, null);
+				        kf.setVisible(true);
 					}
 				}
 			}

@@ -35,7 +35,6 @@ public class Biblioteka {
 	private ArrayList<Zanr> zanrovi;
 	private ArrayList<Primerak> primerci;
 	private ArrayList<Iznajmljivanje> iznajmljivanja;
-	private ArrayList<TipClanarine> tipoviClanarine;
 	
 	public Biblioteka() {
 		this.id = "";
@@ -189,10 +188,6 @@ public class Biblioteka {
 	
 	public void ukloniIznajmljivanje(Iznajmljivanje iznajmljivanje) {
 		this.iznajmljivanja.remove(iznajmljivanje);
-	}
-
-	public ArrayList<TipClanarine> getTipoviClanarine() {
-		return tipoviClanarine;
 	}
 	
 	public Zaposleni login(String korisnickoIme, String lozinka) {
@@ -410,6 +405,32 @@ public class Biblioteka {
 			e.printStackTrace();
 		}
 	}
+
+	public void snimiKnjige(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String content = "";
+			for (Knjiga knjiga : knjige) {
+				String text = "";
+				text +=
+						knjiga.getId() + '|' +
+						knjiga.getNaslov() + '|' +
+						knjiga.getOriginalniNaslov() + '|' +
+						knjiga.getPisac() + '|' +
+						knjiga.getGodinaObjave() + '|' +
+						knjiga.getJezikOriginala() + '|' +
+						knjiga.getOpis() + '|' +
+						knjiga.getZanr().getNaziv() + "\n";
+				content += text;
+				}
+				bw.write(content);
+				bw.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom dodavanja knjige!");
+				e.printStackTrace();
+			}
+	}
 	
 	public void ucitajZanrove(String fajl) {
 		try {
@@ -524,12 +545,6 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
 			e.printStackTrace();
 		}
-	}
-
-	public void ucitajTipoveClanarine() {
-		tipoviClanarine.add(TipClanarine.OSNOVNA);
-		tipoviClanarine.add(TipClanarine.DECA);
-		tipoviClanarine.add(TipClanarine.PENZIONERI);
 	}
 	
 }
