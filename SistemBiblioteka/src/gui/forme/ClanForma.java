@@ -14,10 +14,12 @@ import javax.swing.JTextField;
 import main.BibliotekaMain;
 import net.miginfocom.swing.MigLayout;
 import osobe.Pol;
+import osobe.TipClanarine;
 import osobe.Bibliotekar;
 import biblioteka.Biblioteka;
+import gui.prikaz.TipClProzor;
 
-public class BibForma extends JFrame {
+public class ClanForma extends JFrame {
 
 	private JLabel lblID = new JLabel("ID");
 	private JTextField txtID = new JTextField(10);
@@ -31,10 +33,12 @@ public class BibForma extends JFrame {
 	private JComboBox<Pol> cbPol = new JComboBox<Pol>(Pol.values());
     private JLabel lblAdresa = new JLabel("Adresa");
 	private JTextField txtAdresa = new JTextField(20);
-    private JLabel lblPlata = new JLabel("Plata");
-	private JTextField txtPlata = new JTextField(10);
-	private JLabel lblKorisnickoIme = new JLabel("Korisnicko ime");
-	private JTextField txtKorisnickoIme = new JTextField(20);
+    private JLabel lblBrClKarte = new JLabel("Broj clanske karte");
+	private JTextField txtBrClKarte = new JTextField(10);
+    private JLabel lblTipCl = new JLabel("Tip clanarine");
+	private JComboBox<TipClanarine> cbTipCl = new JComboBox<TipClanarine>(TipClanarine.values());
+	private JLabel lblDatumPoslUpl = new JLabel("Datum poslednje uplate");
+	private JCalendar txtKorisnickoIme = new JTextField(20);
 	private JLabel lblLozinka = new JLabel("Lozinka");
 	private JPasswordField pfLozinka = new JPasswordField(20);
 	

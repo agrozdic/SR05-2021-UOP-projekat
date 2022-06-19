@@ -133,7 +133,7 @@ public class BibProzor extends JFrame {
                         }
                     }
 					if(bibliotekar == null) {
-						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja prodavca sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja bibliotekara sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
 						BibForma bf = new BibForma(biblioteka, bibliotekar);
 						bf.setVisible(true);

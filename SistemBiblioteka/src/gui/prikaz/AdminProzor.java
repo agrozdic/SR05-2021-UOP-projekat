@@ -134,7 +134,7 @@ public class AdminProzor extends JFrame {
                         }
                     }
 					if(admin == null) {
-						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja prodavca sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Greska prilikom pronalazenja bibliotekara sa tim korisnickim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
 					}else {
 						AdminForma af = new AdminForma(biblioteka, admin);
 						af.setVisible(true);
