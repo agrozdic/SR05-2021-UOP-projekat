@@ -84,7 +84,6 @@ public class KnjigaForma extends JFrame {
         String zanrArr[] = new String[biblioteka.getZanrovi().size()];
         for(int i = 0; i < biblioteka.getZanrovi().size(); i++){
             zanrArr[i] = biblioteka.getZanrovi().get(i).getNaziv();
-            System.out.println(zanrArr[i]);
         }
         cbZanr = new JComboBox<String>(zanrArr);
         add(cbZanr);

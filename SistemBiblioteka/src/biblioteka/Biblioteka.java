@@ -495,6 +495,29 @@ public class Biblioteka {
 			e.printStackTrace();
 		}
 	}
+
+	public void snimiPrimerke(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String content = "";
+			for (Primerak prim : primerci) {
+				String text = "";
+				text +=
+						prim.getId() + '|' +
+						prim.getKnjiga().getNaslov() + '|' +
+						prim.getTipPoveza() + '|' +
+						prim.getGodinaStampe() + '|' +
+						prim.isIzdat() + "\n";
+				content += text;
+				}
+				bw.write(content);
+				bw.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom dodavanja knjige!");
+				e.printStackTrace();
+			}
+	}
 	
 	public void ucitajIznajmljivanja(String fajl) {
 		try {

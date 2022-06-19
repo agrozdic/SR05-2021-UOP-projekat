@@ -70,7 +70,7 @@ public class KnjigeProzor extends JFrame {
 			sadrzaj[i][4] = knjiga.getGodinaObjave();
 			sadrzaj[i][5] = knjiga.getJezikOriginala();
 			sadrzaj[i][6] = knjiga.getOpis();
-			sadrzaj[i][7] = knjiga.getZanr().getOznaka();
+			sadrzaj[i][7] = knjiga.getZanr().getNaziv();
 		}
 		
 		tableModel = new DefaultTableModel(sadrzaj, zaglavlja);

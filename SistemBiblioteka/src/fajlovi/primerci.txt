@@ -1,8 +1,9 @@
-PRM01|KNJ01|tvrdi|2001|false
-PRM02|KNJ01|meki|2012|true
-PRM03|KNJ02|kozni|1998|true
-PRM04|KNJ02|platneni|1950|false
-PRM05|KNJ03|kozni|2021|false
-PRM06|KNJ03|tvrdi|2008|false
-PRM07|KNJ03|platneni|1999|true
-PRM08|KNJ04|tvrdi|2022|false
+PRM01|Svet se raspada|TVRDI|2001|false
+PRM02|Svet se raspada|MEKI|2012|true
+PRM03|Bajke|KOZNI|1998|true
+PRM04|Bajke|PLATNENI|1950|false
+PRM05|Bozanstvena komedija|KOZNI|2021|false
+PRM06|Bozanstvena komedija|TVRDI|2008|false
+PRM07|Bozanstvena komedija|PLATNENI|1999|true
+PRM08|Ponos i predrasude|TVRDI|2022|false
+PRM09|Svet se raspada|TVRDI|2001|false
