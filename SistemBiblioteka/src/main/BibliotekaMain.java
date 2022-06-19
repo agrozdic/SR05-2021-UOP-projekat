@@ -11,12 +11,12 @@ import osobe.TipClanarine;
 
 public class BibliotekaMain {
 	
-	private static String fZaposleni = "zaposleni.txt";
-	private static String fClanovi = "clanovi.txt";
-	private static String fKnjige = "knjige.txt";
-	private static String fZanrovi = "zanrovi.txt";
-	private static String fPrimerci = "primerci.txt";
-	private static String fIznajmljivanja = "iznajmljivanja.txt";
+	public static String fZaposleni = "zaposleni.txt";
+	public static String fClanovi = "clanovi.txt";
+	public static String fKnjige = "knjige.txt";
+	public static String fZanrovi = "zanrovi.txt";
+	public static String fPrimerci = "primerci.txt";
+	public static String fIznajmljivanja = "iznajmljivanja.txt";
 
 	public static void main(String[] args) {
 		

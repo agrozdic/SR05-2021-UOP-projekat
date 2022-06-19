@@ -9,12 +9,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import biblioteka.Biblioteka;
+import gui.prikaz.*;
 import osobe.Administrator;
-// import gui.formeZaPrikaz.DiskoviProzor;
-// import gui.formeZaPrikaz.KnjigeProzor;
-// import gui.formeZaPrikaz.KompozicijeProzor;
-// import gui.formeZaPrikaz.ProdavciProzor;
-// import osobe.Prodavac;
 import osobe.Zaposleni;
 import biblioteka.Biblioteka;
 
@@ -64,14 +60,68 @@ public class MainProzor extends JFrame {
 	}
 	
 	private void initActions() {
-		Administrator.addActionListener(new ActionListener() {
+		adminItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// AdminProzor ap = new AdminProzor(biblioteka);
-				// ap.setVisible(true);
+				AdminProzor ap = new AdminProzor(biblioteka);
+				ap.setVisible(true);
 			}
 		});
-		
-		
+
+		bibItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BibProzor bp = new BibProzor(biblioteka);
+				bp.setVisible(true);
+			}
+		});
+
+		clanoviItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ClanProzor cp = new ClanProzor(biblioteka);
+				cp.setVisible(true);
+			}
+		});
+
+		tipClItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TipClProzor tcp = new TipClProzor(biblioteka);
+				tcp.setVisible(true);
+			}
+		});
+
+		knjigeItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				KnjigeProzor kp = new KnjigeProzor(biblioteka);
+				kp.setVisible(true);
+			}
+		});
+
+		primerciItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PrimProzor pp = new PrimProzor(biblioteka);
+				pp.setVisible(true);
+			}
+		});
+
+		zanroviItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ZanrProzor zp = new ZanrProzor(biblioteka);
+				zp.setVisible(true);
+			}
+		});
+
+		iznajmItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				IznajmProzor ip = new IznajmProzor(biblioteka);
+				ip.setVisible(true);
+			}
+		});
 	}
 }
