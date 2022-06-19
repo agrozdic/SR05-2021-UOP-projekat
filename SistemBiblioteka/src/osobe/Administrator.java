@@ -1,9 +1,8 @@
 package osobe;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import biblioteka.Biblioteka;
 
 public class Administrator extends Zaposleni {
 	
@@ -15,34 +14,49 @@ public class Administrator extends Zaposleni {
 		super(id, ime, prezime, jmbg, adresa, pol, plata, korisnickoIme, lozinka);
 	}
 
-	public void registrujZaposlene(Zaposleni zaposleni) {
-		String content = "";
-		try(FileWriter fw = new FileWriter("src/fajlovi/zaposleni.txt", true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw))
-			{
-				String pol = zaposleni.getPol().toString();
-				if(pol == "NEIZJASNJENI") pol = " ";
-			    content += "\n"
-			    		+ zaposleni.getId() + '|'
-			    		+ zaposleni.getIme() + '|'
-			    		+ zaposleni.getPrezime() + '|'
-			    		+ zaposleni.getJmbg() + '|'
-			    		+ pol.substring(0, 1).toUpperCase() + '|'
-			    		+ zaposleni.getAdresa() + '|'
-			    		+ zaposleni.getPlata() + '|'
-			    		+ zaposleni.getKorisnickoIme() + '|'
-			    		+ zaposleni.getLozinka();
-			    out.println(content);
-			} catch (IOException e) {
-				System.out.println("Greska prilikom registracije zaposlenog!");
-				e.printStackTrace();
+	public boolean registrujZaposlene(Biblioteka biblioteka, Zaposleni zaposleni) {
+		if(zaposleni.getId().contains("ADM")){
+			ArrayList<Administrator> zaposleniList = biblioteka.getAdministratori();
+			int indicator = 1;
+			for(Administrator adm : zaposleniList){
+				if(adm.getId().equals(zaposleni.getId())){
+					indicator = 0;
+					break;
+				}
 			}
+			if(indicator == 1){
+				biblioteka.dodajAdministratora((Administrator) zaposleni);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		else{
+			ArrayList<Bibliotekar> zaposleniList = biblioteka.getBibliotekari();
+			int indicator = 1;
+			for(Bibliotekar bib : zaposleniList){
+				if(bib.getId().equals(zaposleni.getId())){
+					indicator = 0;
+					break;
+				}
+			}
+			if(indicator == 1){
+				biblioteka.dodajBibliotekara((Bibliotekar) zaposleni);
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
 	}
 	
 	@Override
 	public String toString() {
 		return "\nADMINISTRATOR " + super.toString();
 	}
+
+    public static void addActionListener(ActionListener actionListener) {
+    }
 	
 }

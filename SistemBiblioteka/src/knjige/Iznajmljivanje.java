@@ -1,8 +1,6 @@
 package knjige;
 
 import java.time.LocalDate;
-import osobe.Zaposleni;
-import osobe.Clan;
 
 import osobe.Clan;
 import osobe.Zaposleni;

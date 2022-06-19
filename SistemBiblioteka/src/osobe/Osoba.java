@@ -65,7 +65,7 @@ public abstract class Osoba {
 		return adresa;
 	}
 
-	public void setAdresa(String jmbg) {
+	public void setAdresa(String adresa) {
 		this.adresa = adresa;
 	}
 

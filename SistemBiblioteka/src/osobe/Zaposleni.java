@@ -1,10 +1,8 @@
 package osobe;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import biblioteka.Biblioteka;
 
 public abstract class Zaposleni extends Osoba{
 
@@ -50,31 +48,22 @@ public abstract class Zaposleni extends Osoba{
 		this.lozinka = lozinka;
 	}
 	
-	public void dodajClana(Clan clan) {
-		String content = "";
-		try(FileWriter fw = new FileWriter("src/fajlovi/clanovi.txt", true);
-			    BufferedWriter bw = new BufferedWriter(fw);
-			    PrintWriter out = new PrintWriter(bw))
-			{
-				String pol = clan.getPol().toString();
-				if(pol == "NEIZJASNJENI") pol = " ";
-			    content += "\n"
-			    		+ clan.getId() + '|'
-			    		+ clan.getIme() + '|'
-			    		+ clan.getPrezime() + '|'
-			    		+ clan.getJmbg() + '|'
-			    		+ pol.substring(0, 1).toUpperCase() + '|'
-			    		+ clan.getAdresa() + '|'
-			    		+ clan.getBrojClanskeKarte() + '|'
-			    		+ clan.getTipClanarine().toString().toLowerCase() + '|'
-			    		+ clan.getDatumPoslednjeUplateClanarine() + '|'
-			    		+ clan.getBrojUplacenihMeseci() + '|'
-			    		+ clan.isAktivnost();
-			    out.println(content);
-			} catch (IOException e) {
-				System.out.println("Greska prilikom dodavanja clana!");
-				e.printStackTrace();
+	public boolean dodajClana(Biblioteka biblioteka, Clan clan) {
+		ArrayList<Clan> clanovi = biblioteka.getClanovi();
+		int indicator = 1;
+		for(Clan cl : clanovi){
+			if(cl.getId().equals(clan.getId())){
+				indicator = 0;
+				break;
 			}
+		}
+		if(indicator == 1){
+			biblioteka.dodajClana(clan);
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 	
 	@Override

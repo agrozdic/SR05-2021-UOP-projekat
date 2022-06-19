@@ -6,7 +6,7 @@ public class Zanr {
 	private String oznaka;
 	private String opis;
 	
-	private Zanr() {
+	public Zanr() {
 		this.naziv = "";
 		this.oznaka = "";
 		this.opis = "";

@@ -1,9 +1,10 @@
 package biblioteka;
 
 import java.io.BufferedReader;
-
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -189,6 +190,22 @@ public class Biblioteka {
 		this.iznajmljivanja.remove(iznajmljivanje);
 	}
 	
+	public Zaposleni login(String korisnickoIme, String lozinka) {
+		for(Administrator adm : administratori) {
+			if(adm.getKorisnickoIme().equalsIgnoreCase(korisnickoIme) &&
+			adm.getLozinka().equals(lozinka)) {
+				return adm;
+			}
+		}
+		for(Bibliotekar bib : bibliotekari) {
+			if(bib.getKorisnickoIme().equalsIgnoreCase(korisnickoIme) &&
+			bib.getLozinka().equals(lozinka)) {
+				return bib;
+			}
+		}
+		return null;
+	}
+
 	public void ucitajZaposlene(String fajl) {
 		try {
 			File file = new File("src/fajlovi/" + fajl);
@@ -232,6 +249,46 @@ public class Biblioteka {
 			e.printStackTrace();
 		}
 	}
+
+	public void snimiZaposlene(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String text = "";
+			for (Administrator adm : administratori) {
+				String pol = adm.getPol().toString();
+				if(pol == "NEIZJASNJENI") pol = " ";
+				text +=
+					adm.getId() + "|" +
+					adm.getIme() + "|" +
+					adm.getPrezime() + "|" +
+					adm.getJmbg() + "|" +
+					pol.substring(0, 1).toUpperCase() + '|' +
+					adm.getAdresa() + "|" +
+					adm.getPlata() + "|" +
+					adm.getKorisnickoIme() + "|" +
+					adm.getLozinka() + "\n";
+			}
+			for (Bibliotekar bib : bibliotekari) {
+				String pol = bib.getPol().toString();
+				if(pol == "NEIZJASNJENI") pol = " ";
+				text +=
+					bib.getId() + "|" +
+					bib.getIme() + "|" +
+					bib.getPrezime() + "|" +
+					bib.getJmbg() + "|" +
+					pol.substring(0, 1).toUpperCase() + '|' +
+					bib.getAdresa() + "|" +
+					bib.getPlata() + "|" +
+					bib.getKorisnickoIme() + "|" +
+					bib.getLozinka() + "\n";
+			}
+			bw.write(text);
+			bw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public void ucitajClanove(String fajl) {
 		try {
@@ -253,7 +310,7 @@ public class Biblioteka {
 				boolean aktivnost = Boolean.parseBoolean(split[10]);
 				Pol polClana = null;
 				switch(pol) {
-					case "":
+					case " ":
 						polClana = Pol.NEIZJASNJENI;
 						break;
 					case "Z":
@@ -284,6 +341,37 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
 			e.printStackTrace();
 		}
+	}
+
+	public void snimiClanove(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+			String content = "";
+			for (Clan clan : clanovi) {
+				String text = "";
+				String pol = clan.getPol().toString();
+				if(pol == "NEIZJASNJENI") pol = " ";
+				text +=
+						clan.getId() + '|' +
+						clan.getIme() + '|' +
+						clan.getPrezime() + '|' +
+						clan.getJmbg() + '|' +
+						pol.substring(0, 1).toUpperCase() + '|' +
+						clan.getAdresa() + '|' +
+						clan.getBrojClanskeKarte() + '|' +
+						clan.getTipClanarine().toString().toLowerCase() + '|' +
+						clan.getDatumPoslednjeUplateClanarine() + '|' +
+						clan.getBrojUplacenihMeseci() + '|' +
+						clan.isAktivnost() + "\n";
+				content += text;
+				}
+				bw.write(content);
+				bw.close();
+			} catch (IOException e) {
+				System.out.println("Greska prilikom dodavanja clana!");
+				e.printStackTrace();
+			}
 	}
 	
 	public void ucitajKnjige(String fajl) {
