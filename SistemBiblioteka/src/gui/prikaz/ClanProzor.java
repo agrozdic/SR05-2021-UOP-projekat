@@ -15,10 +15,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import main.BibliotekaMain;
-import osobe.Bibliotekar;
 import osobe.Clan;
 import biblioteka.Biblioteka;
-import gui.forme.BibForma;
 import gui.forme.ClanForma;
 
 public class ClanProzor extends JFrame {

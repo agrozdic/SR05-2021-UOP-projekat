@@ -35,6 +35,7 @@ public class Biblioteka {
 	private ArrayList<Zanr> zanrovi;
 	private ArrayList<Primerak> primerci;
 	private ArrayList<Iznajmljivanje> iznajmljivanja;
+	private ArrayList<TipClanarine> tipoviClanarine;
 	
 	public Biblioteka() {
 		this.id = "";
@@ -188,6 +189,10 @@ public class Biblioteka {
 	
 	public void ukloniIznajmljivanje(Iznajmljivanje iznajmljivanje) {
 		this.iznajmljivanja.remove(iznajmljivanje);
+	}
+
+	public ArrayList<TipClanarine> getTipoviClanarine() {
+		return tipoviClanarine;
 	}
 	
 	public Zaposleni login(String korisnickoIme, String lozinka) {
@@ -519,6 +524,12 @@ public class Biblioteka {
 			System.out.println("Greska prilikom ucitavanja podataka o knjigama");
 			e.printStackTrace();
 		}
+	}
+
+	public void ucitajTipoveClanarine() {
+		tipoviClanarine.add(TipClanarine.OSNOVNA);
+		tipoviClanarine.add(TipClanarine.DECA);
+		tipoviClanarine.add(TipClanarine.PENZIONERI);
 	}
 	
 }

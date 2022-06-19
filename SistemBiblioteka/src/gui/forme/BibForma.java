@@ -146,7 +146,7 @@ public class BibForma extends JFrame {
 		String poruka = "Molimo popravite sledece greske u unosu:\n";
 		
         if(!txtID.getText().contains("BIB")){
-            poruka += "- ID mora biti u formatu Bibxx\n";
+            poruka += "- ID mora biti u formatu BIBxx\n";
 			ok = false;
         }
 

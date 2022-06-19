@@ -27,7 +27,6 @@ public class MainProzor extends JFrame {
 	private JMenuItem iznajmItem = new JMenuItem("Iznajmljivanje");
 	private JMenu clanoviMenu = new JMenu("Clanovi");
 	private JMenuItem clanoviItem = new JMenuItem("Clanovi");
-	private JMenuItem tipClItem = new JMenuItem("Tipovi clanarine");
 	
 	private Biblioteka biblioteka;
 	private Zaposleni zaposleni;
@@ -51,7 +50,6 @@ public class MainProzor extends JFrame {
 		zaposleniMenu.add(bibItem);
 		mainMenu.add(clanoviMenu);
 		clanoviMenu.add(clanoviItem);
-		clanoviMenu.add(tipClItem);
 		mainMenu.add(BibliotekaMenu);
 		BibliotekaMenu.add(knjigeItem);
 		BibliotekaMenu.add(primerciItem);
@@ -81,14 +79,6 @@ public class MainProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ClanProzor cp = new ClanProzor(biblioteka);
 				cp.setVisible(true);
-			}
-		});
-
-		tipClItem.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				TipClProzor tcp = new TipClProzor(biblioteka);
-				tcp.setVisible(true);
 			}
 		});
 
