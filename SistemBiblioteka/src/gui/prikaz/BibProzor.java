@@ -15,7 +15,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import main.BibliotekaMain;
+import osobe.Administrator;
 import osobe.Bibliotekar;
+import osobe.Zaposleni;
 import biblioteka.Biblioteka;
 import gui.forme.BibForma;
 
@@ -30,9 +32,17 @@ public class BibProzor extends JFrame {
 	private JTable bibTabela;
 	
 	private Biblioteka biblioteka;
+	private Administrator LogovaniAdmin = null;
+	private Bibliotekar LogovaniBibliotekar = null;
 	
-	public BibProzor(Biblioteka biblioteka) {
+	public BibProzor(Biblioteka biblioteka, Zaposleni zaposleni) {
 		this.biblioteka = biblioteka;
+		if(zaposleni instanceof Administrator){
+			this.LogovaniAdmin = (Administrator)zaposleni;
+		}
+		else{
+			this.LogovaniBibliotekar = (Bibliotekar)zaposleni;
+		}
 		setTitle("Bibliotekari");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -53,6 +63,9 @@ public class BibProzor extends JFrame {
 		mainToolbar.add(btnEdit);
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
+		if(LogovaniBibliotekar != null){
+			mainToolbar.setVisible(false);
+		}
 		
 		String[] zaglavlja = new String[] {"ID", "Ime", "Prezime", "JMBG", "Pol", "Adresa", "Plata", "Korisnicko ime", "Lozinka"};
 		Object[][] sadrzaj = new Object[biblioteka.getBibliotekari().size()][zaglavlja.length];

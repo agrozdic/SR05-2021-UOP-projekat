@@ -17,6 +17,8 @@ import javax.swing.table.DefaultTableModel;
 //import gui.formeZaDodavanjeIIzmenu.ProdavciForma;
 import main.BibliotekaMain;
 import osobe.Administrator;
+import osobe.Bibliotekar;
+import osobe.Zaposleni;
 import biblioteka.Biblioteka;
 import gui.forme.AdminForma;
 
@@ -31,9 +33,17 @@ public class AdminProzor extends JFrame {
 	private JTable adminTabela;
 	
 	private Biblioteka biblioteka;
+	private Administrator LogovaniAdmin = null;
+	private Bibliotekar LogovaniBibliotekar = null;
 	
-	public AdminProzor(Biblioteka biblioteka) {
+	public AdminProzor(Biblioteka biblioteka, Zaposleni zaposleni) {
 		this.biblioteka = biblioteka;
+		if(zaposleni instanceof Administrator){
+			this.LogovaniAdmin = (Administrator)zaposleni;
+		}
+		else{
+			this.LogovaniBibliotekar = (Bibliotekar)zaposleni;
+		}
 		setTitle("Administratori");
 		setSize(500, 300);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,10 +60,14 @@ public class AdminProzor extends JFrame {
 		ImageIcon deleteIcon = new ImageIcon(getClass().getResource("/slike/remove.gif"));
 		btnDelete.setIcon(deleteIcon);
 		
+		
 		mainToolbar.add(btnAdd);
 		mainToolbar.add(btnEdit);
 		mainToolbar.add(btnDelete);
 		add(mainToolbar, BorderLayout.NORTH);
+		if(LogovaniBibliotekar != null){
+			mainToolbar.setVisible(false);
+		}
 		
 		String[] zaglavlja = new String[] {"ID", "Ime", "Prezime", "JMBG", "Pol", "Adresa", "Plata", "Korisnicko ime", "Lozinka"};
 		Object[][] sadrzaj = new Object[biblioteka.getAdministratori().size()][zaglavlja.length];
