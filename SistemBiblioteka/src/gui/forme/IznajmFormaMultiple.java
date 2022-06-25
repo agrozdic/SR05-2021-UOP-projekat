@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -19,7 +20,10 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
 
@@ -43,7 +47,6 @@ public class IznajmFormaMultiple extends JFrame {
 	private JDateChooser dcDatum = new JDateChooser();
     private JLabel lblPrim = new JLabel("Primerci");
 	private List<JCheckBox> cblist = new ArrayList<>();
-    private ButtonGroup bg = new ButtonGroup();
 	private JComboBox<String> cbPrim;
 	
 	private JButton btnOk = new JButton("OK");
@@ -130,9 +133,18 @@ public class IznajmFormaMultiple extends JFrame {
 
 		if(iznajmljivanje == null){
 			add(new JLabel());
+			JPanel cbPanel = new JPanel();
+			cbPanel.setLayout(layout);
+			cbPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+			//test.setPreferredSize(new Dimension( 2000,2000));
+			JScrollPane scrollFrame = new JScrollPane(cbPanel);
+			cbPanel.setAutoscrolls(true);
+			scrollFrame.setPreferredSize(null);
+			scrollFrame.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 			for(JCheckBox jcb : cblist){
-				add(jcb);
+				cbPanel.add(jcb);
 			}
+			add(scrollFrame);
 		}
 		else{
 			add(cbPrim);
