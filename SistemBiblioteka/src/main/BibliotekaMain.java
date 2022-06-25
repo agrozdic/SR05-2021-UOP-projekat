@@ -25,6 +25,7 @@ public class BibliotekaMain {
 	public static String fPrimerci = "primerci.txt";
 	public static String fIznajmljivanja = "iznajmljivanja.txt";
 	public static String fBiblioteke = "biblioteke.txt";
+	public static String fCene = "cene.txt";
 	private static ArrayList<Biblioteka> biblioteke = new ArrayList<Biblioteka>();
 
 	public static void main(String[] args) {
@@ -37,6 +38,7 @@ public class BibliotekaMain {
 		biblioteka.ucitajKnjige(fKnjige);
 		biblioteka.ucitajPrimerke(fPrimerci);
 		biblioteka.ucitajIznajmljivanja(fIznajmljivanja);
+		biblioteka.ucitajCene(fCene);
 		
 		
 		// Clan noviClan = new Clan("CLA05", "Milenko", "Milenkovic", "0506993860987", "Novosadska 1, Novi Sad", Pol.NEIZJASNJENI, "BCK005", TipClanarine.OSNOVNA, LocalDate.parse("2022-01-01"), 1, true);

@@ -6,8 +6,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import osobe.Administrator;
 import osobe.Bibliotekar;
@@ -36,6 +40,7 @@ public class Biblioteka {
 	private ArrayList<Zanr> zanrovi;
 	private ArrayList<Primerak> primerci;
 	private ArrayList<Iznajmljivanje> iznajmljivanja;
+	Map<TipClanarine, Integer> cene;
 	
 	public Biblioteka() {
 		this.id = "";
@@ -51,6 +56,7 @@ public class Biblioteka {
 		this.zanrovi = new ArrayList<Zanr>();
 		this.primerci = new ArrayList<Primerak>();
 		this.iznajmljivanja = new ArrayList<Iznajmljivanje>();
+		this.cene = new HashMap<TipClanarine, Integer>();
 	}
 	
 	public Biblioteka(String id, String naziv, String adresa, String telefon, String radnoVreme) {
@@ -67,6 +73,7 @@ public class Biblioteka {
 		this.zanrovi = new ArrayList<Zanr>();
 		this.primerci = new ArrayList<Primerak>();
 		this.iznajmljivanja = new ArrayList<Iznajmljivanje>();
+		this.cene = new HashMap<TipClanarine, Integer>();
 	}
 
 	public String getId() {
@@ -199,6 +206,10 @@ public class Biblioteka {
 	
 	public void ukloniIznajmljivanje(Iznajmljivanje iznajmljivanje) {
 		this.iznajmljivanja.remove(iznajmljivanje);
+	}
+
+	public Map<TipClanarine, Integer> getCene() {
+		return cene;
 	}
 	
 	public Zaposleni login(String korisnickoIme, String lozinka) {
@@ -344,6 +355,12 @@ public class Biblioteka {
 					case "penzioneri":
 						tipClanarineObj = TipClanarine.PENZIONERI;
 						break;
+				}
+				LocalDate from = datumPoslednjeUplateClanarine;
+				LocalDate to = LocalDate.now();
+				Period period = Period.between(from, to);
+				if(period.getMonths() > brojUplacenihMeseci){
+					aktivnost = false;
 				}
 				Clan clan = new Clan(id, ime, prezime, jmbg, adresa, polClana, brojClanskeKarte, tipClanarineObj, datumPoslednjeUplateClanarine, brojUplacenihMeseci, aktivnost);
 				clanovi.add(clan);
@@ -625,6 +642,37 @@ public class Biblioteka {
 				System.out.println("Greska prilikom dodavanja knjige!");
 				e.printStackTrace();
 			}
+	}
+
+	public void ucitajCene(String fajl) {
+		try {
+			File file = new File("src/fajlovi/" + fajl);
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				String[] split = line.split("\\|");
+				String tipClanarine = split[0];
+				int cena = Integer.parseInt(split[1]);
+				TipClanarine tipClanarineObj = null;
+				switch(tipClanarine) {
+					case "OSNOVNA":
+						tipClanarineObj = TipClanarine.OSNOVNA;
+						break;
+					case "DECA":
+						tipClanarineObj = TipClanarine.DECA;
+						break;
+					case "PENZIONERI":
+						tipClanarineObj = TipClanarine.PENZIONERI;
+						break;
+				}
+				cene.put(tipClanarineObj, cena);
+				
+			}
+			reader.close();
+		} catch (IOException e) {
+			System.out.println("Greska prilikom ucitavanja podataka o cenama");
+			e.printStackTrace();
+		}
 	}
 	
 }

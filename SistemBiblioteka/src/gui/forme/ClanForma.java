@@ -51,6 +51,8 @@ public class ClanForma extends JFrame {
 	private JRadioButton rbTrue = new JRadioButton("True", true);
 	private JRadioButton rbFalse = new JRadioButton("False", false);
 	private ButtonGroup rgAktivnost = new ButtonGroup();
+	private JButton btnZaPlacanje = new JButton("Za placanje:");
+	private JLabel lblCena = new JLabel("0 dinara");
 	
 	private JButton btnOk = new JButton("OK");
 	private JButton btnCanel = new JButton("Cancel");
@@ -117,12 +119,34 @@ public class ClanForma extends JFrame {
 		rbFalse.setActionCommand("false");
 		rgAktivnost.add(rbTrue);
 		rgAktivnost.add(rbFalse);
+		add(btnZaPlacanje);
+		add(lblCena);
 		add(new JLabel());
 		add(btnOk, "split 2");
 		add(btnCanel);
 	}
 	
 	private void initActions() {
+		btnZaPlacanje.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int brMeseci = Integer.parseInt(txtBrUplMeseci.getText().trim());
+				TipClanarine tc = (TipClanarine)cbTipCl.getSelectedItem();
+				int mesCena = biblioteka.getCene().get(tc);
+				double ukupno = brMeseci * mesCena;
+				if(brMeseci > 6){
+					if(brMeseci > 12){
+						ukupno = 0.8 * ukupno;
+					}
+					else{
+						ukupno = 0.9 * ukupno;
+					}
+				}
+				String ukupnoStr = "" + ukupno;
+				lblCena.setText(ukupnoStr);
+			}
+		});
+
 		btnOk.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -189,6 +213,20 @@ public class ClanForma extends JFrame {
 			rbTrue.setSelected(false);
 			rbFalse.setSelected(true);
 		}
+		int brMeseci = Integer.parseInt(txtBrUplMeseci.getText().trim());
+		TipClanarine tc = (TipClanarine)cbTipCl.getSelectedItem();
+		int mesCena = biblioteka.getCene().get(tc);
+		double ukupno = brMeseci * mesCena;
+		if(brMeseci > 6){
+			if(brMeseci > 12){
+				ukupno = 0.8 * ukupno;
+			}
+			else{
+				ukupno = 0.9 * ukupno;
+			}
+		}
+		String ukupnoStr = "" + ukupno;
+		lblCena.setText(ukupnoStr);
 		
 	}
 	
