@@ -49,12 +49,20 @@ public class PrimForma extends JFrame {
 		}else {
 			setTitle("Izmena podataka - " + primerak.getId());
 		}
+		
+		String knjigarArr[] = new String[biblioteka.getKnjige().size()];
+        for(int i = 0; i < biblioteka.getKnjige().size(); i++){
+            knjigarArr[i] = biblioteka.getKnjige().get(i).getNaslov();
+        }
+        cbKnjiga = new JComboBox<String>(knjigarArr);
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		initGUI();
 		initActions();
 		setResizable(false);
 		pack();
+		
 	}
 	
 	private void initGUI() {
@@ -67,11 +75,7 @@ public class PrimForma extends JFrame {
 		
         add(lblID);
         add(txtID);
-        String knjigarArr[] = new String[biblioteka.getKnjige().size()];
-        for(int i = 0; i < biblioteka.getKnjige().size(); i++){
-            knjigarArr[i] = biblioteka.getKnjige().get(i).getNaslov();
-        }
-        cbKnjiga = new JComboBox<String>(knjigarArr);
+        
 		add(lblKnjiga);
 		add(cbKnjiga);
 		add(lblTipPoveza);
@@ -123,11 +127,24 @@ public class PrimForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				PrimForma.this.dispose();
+				PrimForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {
         txtID.setEditable(false);
         txtID.setText(primerak.getId());
+		for(int i = 0; i < cbKnjiga.getItemCount(); i++){
+			if(primerak.getKnjiga().getNaslov() == biblioteka.getKnjige().get(i).getNaslov()){
+				cbKnjiga.setSelectedIndex(i);
+				break;
+			}
+		} 
 		//cbKnjiga.setSelectedItem(primerak.getKnjiga().getNaslov());
 		cbTipPoveza.setSelectedItem(primerak.getTipPoveza());
         txtGodina.setText(primerak.getGodinaStampe() + "");

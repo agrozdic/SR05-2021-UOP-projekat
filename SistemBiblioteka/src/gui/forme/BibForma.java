@@ -125,6 +125,13 @@ public class BibForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				BibForma.this.dispose();
+				BibForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {

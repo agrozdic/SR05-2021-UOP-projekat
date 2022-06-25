@@ -88,6 +88,13 @@ public class ZanrForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ZanrForma.this.dispose();
+				ZanrForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {

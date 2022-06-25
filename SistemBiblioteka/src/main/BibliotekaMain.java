@@ -4,17 +4,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.time.LocalDate;
+//import java.time.LocalDate;
 import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 import biblioteka.Biblioteka;
 import gui.LoginProzor;
-import osobe.Administrator;
-import osobe.Clan;
-import osobe.Pol;
-import osobe.TipClanarine;
+//import osobe.Administrator;
+//import osobe.Clan;
+//import osobe.Pol;
+//import osobe.TipClanarine;
 
 public class BibliotekaMain {
 	

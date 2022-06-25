@@ -159,6 +159,13 @@ public class ClanForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ClanForma.this.dispose();
+				ClanForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {

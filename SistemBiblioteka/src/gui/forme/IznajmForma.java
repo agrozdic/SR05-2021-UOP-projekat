@@ -2,10 +2,13 @@ package gui.forme;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.text.DateFormat;
+//import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -51,6 +54,25 @@ public class IznajmForma extends JFrame {
 		}else {
 			setTitle("Izmena podataka - " + iznajmljivanje.getId());
 		}
+
+		String zaposleniArr[] = new String[biblioteka.getZaposleni().size()];
+        for(int i = 0; i < biblioteka.getZaposleni().size(); i++){
+            zaposleniArr[i] = biblioteka.getZaposleni().get(i).getId();
+        }
+        cbZap = new JComboBox<String>(zaposleniArr);
+
+		String clanoviArr[] = new String[biblioteka.getClanovi().size()];
+        for(int i = 0; i < biblioteka.getClanovi().size(); i++){
+            clanoviArr[i] = biblioteka.getClanovi().get(i).getId();
+        }
+        cbClan = new JComboBox<String>(clanoviArr);
+
+		String primerciArr[] = new String[biblioteka.getPrimerci().size()];
+        for(int i = 0; i < biblioteka.getPrimerci().size(); i++){
+            primerciArr[i] = biblioteka.getPrimerci().get(i).getId();
+        }
+        cbPrim = new JComboBox<String>(primerciArr);
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		initGUI();
@@ -69,18 +91,10 @@ public class IznajmForma extends JFrame {
 		
         add(lblID);
         add(txtID);
-        String zaposleniArr[] = new String[biblioteka.getZaposleni().size()];
-        for(int i = 0; i < biblioteka.getZaposleni().size(); i++){
-            zaposleniArr[i] = biblioteka.getZaposleni().get(i).getId();
-        }
-        cbZap = new JComboBox<String>(zaposleniArr);
+        
 		add(lblZap);
 		add(cbZap);
-        String clanoviArr[] = new String[biblioteka.getClanovi().size()];
-        for(int i = 0; i < biblioteka.getClanovi().size(); i++){
-            clanoviArr[i] = biblioteka.getClanovi().get(i).getId();
-        }
-        cbClan = new JComboBox<String>(clanoviArr);
+        
 		add(lblClan);
 		add(cbClan);
         java.util.Date date;
@@ -92,11 +106,7 @@ public class IznajmForma extends JFrame {
 		}
         add(lblDatum);
 		add(dcDatum);
-        String primerciArr[] = new String[biblioteka.getPrimerci().size()];
-        for(int i = 0; i < biblioteka.getPrimerci().size(); i++){
-            primerciArr[i] = biblioteka.getPrimerci().get(i).getId();
-        }
-        cbPrim = new JComboBox<String>(primerciArr);
+        
 		add(lblPrim);
 		add(cbPrim);
 		add(new JLabel());
@@ -151,15 +161,36 @@ public class IznajmForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				IznajmForma.this.dispose();
+				IznajmForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {
         txtID.setEditable(false);
         txtID.setText(iznajmljivanje.getId());
-		// cbZap.setSelectedItem(iznajmljivanje.getZaposleni().getId());
-		// cbClan.setSelectedItem(iznajmljivanje.getClan().getId());
-        // dcDatum.setDate(java.sql.Date.valueOf(iznajmljivanje.getDatum()));
-        // cbPrim.setSelectedItem(iznajmljivanje.getPrimerak().getId());
+		for(int i = 0; i < cbZap.getItemCount(); i++){
+			if(iznajmljivanje.getZaposleni().getId() == biblioteka.getZaposleni().get(i).getId()){
+				cbZap.setSelectedIndex(i);
+				break;
+			}
+		}
+		for(int i = 0; i < cbClan.getItemCount(); i++){
+			if(iznajmljivanje.getClan().getId() == biblioteka.getClanovi().get(i).getId()){
+				cbClan.setSelectedIndex(i);
+				break;
+			}
+		}
+		for(int i = 0; i < cbPrim.getItemCount(); i++){
+			if(iznajmljivanje.getPrimerak().getId() == biblioteka.getPrimerci().get(i).getId()){
+				cbPrim.setSelectedIndex(i);
+				break;
+			}
+		}
 	}
 	
 	private boolean validacija() {

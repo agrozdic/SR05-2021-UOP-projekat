@@ -507,16 +507,16 @@ public class Biblioteka {
 				}
 				TipPoveza tpObj = null;
 				switch(tipPoveza) {
-					case "meki":
+					case "MEKI":
 						tpObj = TipPoveza.MEKI;
 						break;
-					case "tvrdi":
+					case "TVRDI":
 						tpObj = TipPoveza.TVRDI;
 						break;
-					case "kozni":
+					case "KOZNI":
 						tpObj = TipPoveza.KOZNI;
 						break;
-					case "platneni":
+					case "PLATNENI":
 						tpObj = TipPoveza.PLATNENI;
 						break;
 				}

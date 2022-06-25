@@ -125,6 +125,13 @@ public class AdminForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				AdminForma.this.dispose();
+				AdminForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {

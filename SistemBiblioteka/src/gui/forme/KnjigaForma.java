@@ -50,6 +50,13 @@ public class KnjigaForma extends JFrame {
 		}else {
 			setTitle("Izmena podataka - " + knjiga.getId());
 		}
+
+		String zanrArr[] = new String[biblioteka.getZanrovi().size()];
+        for(int i = 0; i < biblioteka.getZanrovi().size(); i++){
+            zanrArr[i] = biblioteka.getZanrovi().get(i).getNaziv();
+        }
+        cbZanr = new JComboBox<String>(zanrArr);
+
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		initGUI();
@@ -81,11 +88,7 @@ public class KnjigaForma extends JFrame {
         add(lblOpis);
         add(txtOpis);
         add(lblZanr);
-        String zanrArr[] = new String[biblioteka.getZanrovi().size()];
-        for(int i = 0; i < biblioteka.getZanrovi().size(); i++){
-            zanrArr[i] = biblioteka.getZanrovi().get(i).getNaziv();
-        }
-        cbZanr = new JComboBox<String>(zanrArr);
+        
         add(cbZanr);
 		add(new JLabel());
 		add(btnOk, "split 2");
@@ -131,6 +134,13 @@ public class KnjigaForma extends JFrame {
 				}
 			}
 		});
+		btnCanel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				KnjigaForma.this.dispose();
+				KnjigaForma.this.setVisible(false);
+			}
+		});
 	}
 	
 	private void popuniPolja() {
@@ -142,6 +152,12 @@ public class KnjigaForma extends JFrame {
         txtGodina.setText(knjiga.getGodinaObjave() + "");
         txtJezik.setText(knjiga.getJezikOriginala());
         txtOpis.setText(knjiga.getOpis());
+		for(int i = 0; i < cbZanr.getItemCount(); i++){
+			if(knjiga.getZanr().getNaziv() == biblioteka.getZanrovi().get(i).getNaziv()){
+				cbZanr.setSelectedIndex(i);
+				break;
+			}
+		}
 		//cbZanr.getModel().setSelectedItem(knjiga.getZanr().getNaziv());
 	}
 	
