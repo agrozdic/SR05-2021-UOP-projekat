@@ -83,6 +83,7 @@ public class PrimForma extends JFrame {
         add(lblGodina);
 		add(txtGodina);
         add(lblIzdat);
+		add(new JLabel());
         add(rbTrue);
         add(rbFalse);
         rbTrue.setActionCommand("true");
