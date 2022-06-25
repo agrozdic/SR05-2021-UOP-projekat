@@ -19,6 +19,7 @@ import main.BibliotekaMain;
 import biblioteka.Biblioteka;
 import knjige.Iznajmljivanje;
 import gui.forme.IznajmForma;
+import gui.forme.IznajmFormaMultiple;
 
 public class IznajmProzor extends JFrame {
 
@@ -110,7 +111,7 @@ public class IznajmProzor extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				IznajmForma izf = new IznajmForma(biblioteka, null);
+				IznajmFormaMultiple izf = new IznajmFormaMultiple(biblioteka, null);
 				izf.setVisible(true);
 			}
 		});

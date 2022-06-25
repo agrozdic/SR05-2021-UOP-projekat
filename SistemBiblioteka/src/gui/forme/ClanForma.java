@@ -110,6 +110,7 @@ public class ClanForma extends JFrame {
 		add(lblBrUplMeseci);
 		add(txtBrUplMeseci);
 		add(lblAktivnost);
+		add(new JLabel());
 		add(rbTrue);
 		add(rbFalse);
 		rbTrue.setActionCommand("true");
