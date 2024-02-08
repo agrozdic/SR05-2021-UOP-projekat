@@ -1,9 +1,3 @@
-# Biblioteka
+# books4j
 
-Projekat sa sa predmeta Uvod u objektno programiranje.
-
-Bilo je potrebno implementirati sistem za upravljanje bibliotekom.
-
-Za ovaj zadatak korišćen je programski jezik Java.
-
-Ocena iz predmeta je bila 10.
+Library management desktop application made in Java Spring Boot.
